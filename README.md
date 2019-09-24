@@ -6,7 +6,7 @@
 
 > The most popular carry trades involve buying currency pairs like the Australian dollar/Japanese yen and New Zealand dollar/Japanese yen because the interest rate spreads of these currency pairs are very high. The first step in putting together a carry trade is to find out which currency offers a high yield and which one offers a low yield.
 
-My Project is constructed with 3 part.
+## My Project is constructed with 3 part.
 1. Expert Advisor of MT4 -> EX4
 2. MTApi Controller -> CarryTraderTerminal
 3. CarryTrading Management System -> CarryTraderManager
