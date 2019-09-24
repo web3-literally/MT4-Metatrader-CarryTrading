@@ -10,8 +10,13 @@
 1. Expert Advisor of MT4 -> EX4
 2. MTApi Controller -> CarryTraderTerminal
 3. CarryTrading Management System -> CarryTraderManager
-
-![](header.png)
+## CarryTrader Manager Interfaces
+![](1.png)
+![](2.png)
+## CarryTrader Terminal Manager Interface
+![](3.png)
+## Broker EA
+![](4.png)
 
 ## Installation
 
