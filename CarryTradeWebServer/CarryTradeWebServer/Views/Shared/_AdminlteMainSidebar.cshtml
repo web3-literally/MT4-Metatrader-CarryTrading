@@ -1,0 +1,93 @@
+﻿@model coderush.Models.ApplicationUser
+@inject coderush.Data.ApplicationDbContext Context
+
+@{
+    UserProfile profile = Context.UserProfile.SingleOrDefault(x => x.ApplicationUserId.Equals(Model.Id));
+    List<string> RoleItems = Context.MembershipRole
+        .Where(x => x.MembershipId.Equals(profile.MembershipId))
+        .Select(x=>x.RoleName)
+        .ToList();
+    
+}
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="@profile.ProfilePicture" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>@profile.FirstName @profile.LastName</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">DASHBOARD</li>
+            @if (RoleItems.IndexOf(MainMenu.Dashboard.RoleName) > -1)
+            {
+                <li class="@Html.IsSelected(controller: MainMenu.Dashboard.ControllerName)">
+                    <a href="@MainMenu.Dashboard.Path">
+                        <i class="fa fa-pie-chart"></i> <span>@MainMenu.Dashboard.PageName</span>
+                    </a>
+                </li>
+            }
+
+            <li class="header">TERMINAL MANAGEMENT</li>
+            @if (RoleItems.IndexOf(MainMenu.TerminalManage.RoleName) > -1)
+            {
+                <li class="@Html.IsSelected(controller: MainMenu.TerminalManage.ControllerName)">
+                    <a href="@MainMenu.TerminalManage.Path">
+                        <i class="fa fa-pie-chart"></i> <span>@MainMenu.TerminalManage.PageName</span>
+                    </a>
+                </li>
+            }
+            <li class="header">USER & ROLE</li>
+            @if (RoleItems.IndexOf(MainMenu.User.RoleName) > -1)
+            {
+                <li class="@Html.IsSelected(controller: MainMenu.User.ControllerName, action: MainMenu.User.ActionName)">
+                    <a href="@MainMenu.User.Path">
+                        <i class="fa fa-users"></i> <span>@MainMenu.User.PageName</span>
+                    </a>
+                </li>
+            }
+            @if (RoleItems.IndexOf(MainMenu.Membership.RoleName) > -1)
+            {
+                <li class="@Html.IsSelected(controller: MainMenu.Membership.ControllerName, action: MainMenu.User.ActionName)">
+                    <a href="@MainMenu.Membership.Path">
+                        <i class="fa fa-users"></i> <span>@MainMenu.Membership.PageName</span>
+                    </a>
+                </li>
+            }
+            @if (RoleItems.IndexOf(MainMenu.ChangePassword.RoleName) > -1)
+            {
+                <li class="@Html.IsSelected(controller: MainMenu.ChangePassword.ControllerName, action: MainMenu.ChangePassword.ActionName)">
+                    <a href="@MainMenu.ChangePassword.Path">
+                        <i class="fa fa-key"></i> <span>@MainMenu.ChangePassword.PageName</span>
+                    </a>
+                </li>
+            }
+            @if (RoleItems.IndexOf(MainMenu.Role.RoleName) > -1)
+            {
+                <li class="@Html.IsSelected(controller: MainMenu.Role.ControllerName, action: MainMenu.Role.ActionName)">
+                    <a href="@MainMenu.Role.Path">
+                        <i class="fa fa-gear"></i> <span>@MainMenu.Role.PageName</span>
+                    </a>
+                </li>
+            }
+            @if (RoleItems.IndexOf(MainMenu.ChangeRole.RoleName) > -1)
+            {
+                <li class="@Html.IsSelected(controller: MainMenu.ChangeRole.ControllerName, action: MainMenu.ChangeRole.ActionName)">
+                    <a href="@MainMenu.ChangeRole.Path">
+                        <i class="fa fa-gear"></i> <span>@MainMenu.ChangeRole.PageName</span>
+                    </a>
+                </li>
+            }
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

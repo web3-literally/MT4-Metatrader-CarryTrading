@@ -1,0 +1,31 @@
+{
+  "name": "node-chat-app",
+  "version": "1.0.0",
+  "description": "A simple node chat app to train with socket.io",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "mocha server/**/*.test.js",
+    "test-watch": "nodemon --exec 'npm test'"
+  },
+  "author": "angristan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Angristan/node-chat-app.git"
+  },
+  "dependencies": {
+    "expect": "^1.20.2",
+    "express": "^4.16.3",
+    "mocha": "^5.2.0",
+    "moment": "^2.22.2",
+    "socket.io": "^2.1.1",
+    "ws": "^7.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "nodemon": "^1.18.3"
+  }
+}

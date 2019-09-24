@@ -1,0 +1,655 @@
+﻿@model coderush.Models.ApplicationUser
+@inject coderush.Data.ApplicationDbContext Context
+@{
+    ViewData["Title"] = "MT4 Terminal User";
+    UserProfile profile = Context.UserProfile.SingleOrDefault(x => x.ApplicationUserId.Equals(Model.Id));
+}
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title text-primary"><i class="fa fa-users"></i> @ViewData["Title"]</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="box-body" style="background-color:grey;">
+                <div class="row" style="border:1px solid white; padding:5px; margin:5px;">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="row" style="border:1px solid white; padding:5px; margin:5px;">
+                            <div class="col-lg-4 form-group">
+                                <p>ACCOUNT NO:</p>
+                                <input class="form-control" name="AccountNo1"  type="text" />
+                            </div>
+                            <div class="col-lg-4 form-group">
+                                <p>PASSWORD:</p>
+                                <input class="form-control" name="Password1" type="text" />
+                            </div>
+                            <div class="col-lg-4 form-group">
+                                <p>MT4 SERVER:</p>
+                                <input class="form-control" name="MT4Server1" type="text" />
+                            </div>
+                        </div>
+                        <div class="row" style="border:1px solid white; padding:5px; margin:3px;">
+                            <div class="col-lg-3">
+                                <p>Symbol:</p>
+                                <input class="form-control" name="Symbol1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Bid:</p>
+                                <input class="form-control" name="Bid1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Ask:</p>
+                                <input class="form-control" name="Ask1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>ExpertHandle:</p>
+                                <input class="form-control" name="ExpertHandle1" readonly type="text" />
+                            </div>
+                        </div>
+                        <div class="table-responsive" style="height:150px;padding:5px;">
+                            <table class="table table-bordered mb-0" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th>Ticket</th>
+                                        <th>Symbol</th>
+                                        <th>Operation</th>
+                                        <th>OpenPrice</th>
+                                        <th>ClosePrice</th>
+                                        <th>Lots</th>
+                                        <th>Profit</th>
+                                        <th>MagicNumber</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody1">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="border:1px solid white; padding:5px; margin:3px;">
+                            <div class="col-lg-3">
+                                <p>Balance:</p>
+                                <input class="form-control" name="Balance1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Equity:</p>
+                                <input class="form-control" name="Equity1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>FreeMargin:</p>
+                                <input class="form-control" name="FreeMargin1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Margin:</p>
+                                <input class="form-control" name="Margin1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Profit:</p>
+                                <input class="form-control" name="Profit1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Swap_Buy:</p>
+                                <input class="form-control" name="Swap_Buy1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Swap_Sell:</p>
+                                <input class="form-control" name="Swap_Sell1" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Account No:</p>
+                                <input class="form-control" name="Account_No1" readonly type="text" />
+                            </div>
+                        </div>
+                        <div class="row" style="border:1px solid white; padding:5px; margin:3px;">
+                            <label class="col-lg-2">Slippage:</label>
+                            <input class="col-lg-2" name="slippage1" type="number" value="1" min="1" max="100" step="1" />
+                            <label class="col-lg-2">Volumn:</label>
+                            <input class="col-lg-2" type="number" value="1" min="1" max="100" step="1" />
+                        </div>
+                        <div class="row">
+                            <label class="col-lg-9" id="AccountStateLabel1" style="color:darkred;font-size: large;font-style: italic;"></label>
+                            <span class="glyphicon glyphicon-remove" id="AccountStateIcon1" style="color:darkred;font-size:30px;"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="row" style="border:1px solid white;padding:5px; margin:5px;">
+                            <div class="col-lg-4 form-group">
+                                <p>ACCOUNT NO:</p>
+                                <input class="form-control" name="AccountNo2" type="text" />
+                            </div>
+                            <div class="col-lg-4 form-group">
+                                <p>PASSWORD:</p>
+                                <input class="form-control" name="Password2" type="text" />
+                            </div>
+                            <div class="col-lg-4 form-group">
+                                <p>MT4 SERVER:</p>
+                                <input class="form-control" name="MT4Server2" type="text" />
+                            </div>
+                        </div>
+                        <div class="row" style="border:1px solid white; padding:5px; margin:3px;">
+                            <div class="col-lg-3">
+                                <p>Symbol:</p>
+                                <input class="form-control" name="Symbol2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Bid:</p>
+                                <input class="form-control" name="Bid2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Ask:</p>
+                                <input class="form-control" name="Ask2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>ExpertHandle:</p>
+                                <input class="form-control" name="ExpertHandle2" readonly type="text" />
+                            </div>
+                        </div>
+                        <div class="table-responsive" style="height:150px;padding:5px;">
+                            <table class="table table-bordered mb-0" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th>Ticket</th>
+                                        <th>Symbol</th>
+                                        <th>Operation</th>
+                                        <th>OpenPrice</th>
+                                        <th>ClosePrice</th>
+                                        <th>Lots</th>
+                                        <th>Profit</th>
+                                        <th>MagicNumber</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody2">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="border:1px solid white; padding:5px; margin:3px;">
+                            <div class="col-lg-3">
+                                <p>Balance:</p>
+                                <input class="form-control" name="Balance2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Equity:</p>
+                                <input class="form-control" name="Equity2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>FreeMargin:</p>
+                                <input class="form-control" name="FreeMargin2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Margin:</p>
+                                <input class="form-control" name="Margin2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Profit:</p>
+                                <input class="form-control" name="Profit2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Swap_Buy:</p>
+                                <input class="form-control" name="Swap_Buy2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Swap_Sell:</p>
+                                <input class="form-control" name="Swap_Sell2" readonly type="text" />
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Account No:</p>
+                                <input class="form-control" name="Account_No2" readonly type="text" />
+                            </div>
+                        </div>
+                        <div class="row" style="border:1px solid white; padding:5px; margin:3px;">
+                            <label class="col-lg-2">Slippage:</label>
+                            <input class="col-lg-2" name="slippage2" type="number" value="1" min="1" max="100" step="1" />
+                            <label class="col-lg-2">Volumn:</label>
+                            <input class="col-lg-2" type="number" value="1" min="1" max="100" step="1" />
+                        </div>
+                        <div class="row">
+                            <label class="col-lg-9" id="AccountStateLabel2" style="color:darkred;font-size: large;font-style: italic;"></label>
+                            <span class="glyphicon glyphicon-remove" id="AccountStateIcon2" style="color:darkred;font-size:30px;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="border:1px solid white; padding:5px; margin:5px;">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0" style="text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th>SPREAD TO OPEN:</th>
+                                    <th>SPREAD TO CLOSE:</th>
+                                    <th>CURRENCY PAIR:</th>
+                                    <th>REMAIN MARGIN TARGET(%):</th>
+                                    <th>LOW LIMIT MARGIN PERCENT(%):</th>
+                                    <th>SPLIT COUNT:</th>
+                                    <th>UAGTRADE Username:</th>
+                                    <th>UAGTRADE Password:</th>
+                                    <th>WITHDRAW RETRY COUNT:</th>
+                                    <th>DEPOSITE RETRY COUNT:</th>
+                                    <th>MGICNUMBERS TO CLOSE:</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="number" class="form-control" name="SpreadToOpen" value="1" min="1" max="100" step="1" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" name="SpreadToClose" value="1" min="1" max="100" step="1" />
+                                    </td>
+                                    <td>
+                                        <select type="text" class="form-control" name="CurrencyPair" id="CurrencyPair"></select>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" name="MarginTargetPercent" type="text" value="180" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" name="LowLimitMarginPercent" type="text" value="150" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" name="SpliteCount" value="1" min="1" max="100" step="1" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" name="UsernameToRebalance" type="text" value="fgffsdsxdf" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" name="PasswordToRebalance" type="text" value="Abc12345" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" name="WithdrawRetryCount" value="2" min="1" max="100" step="1" />
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" name="DepositeRetryCount" value="2" min="1" max="100" step="1" />
+                                    </td>
+                                    <td>
+                                        <input class="form-control" name="MagicNumbersToClose" type="text" value="" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row" style="border:1px solid white; padding:5px; margin:5px;">
+                    <button style="width:14%;" onclick="TryLogin()">LOGIN</button>
+                    <button style="width:14%;" onclick="TryDisconnect()">DISCONNECT</button>
+                    <button style="width:14%;" onclick="TrySelectCurrency()">SELECT CURRENCY</button>
+                    <button style="width:14%;" onclick="TryReBalance()">RE-BALANCE</button>
+                    <button style="width:14%;" onclick="TryStartToOpen()">START</button>
+                    <button style="width:14%;" onclick="TryStartToClose()">CLOSE ALL</button>
+                    <button style="width:14%;" onclick="TrySaveSetting()">SAVE SETTING</button>
+                </div>
+                <!-- /.box-body -->
+                <div class="row box-footer" style="background-color:transparent;">
+                    <label class="col-lg-9" name="statusBar" style="color:yellow;font-size: large;font-style: italic;">Ready!</label>
+                    <label class="col-lg-3" name="terminalStatusBar" style="color:greenyellow;font-size: large;font-style: italic;">Waiting Teriminal!</label>
+                </div>
+                <!-- /.box-footer-->
+            </div>
+            <!-- /.box -->
+    </section>
+    <!-- /.content -->
+</div>
+
+<script>
+    const socket = new WebSocket('ws://ec2-18-130-72-146.eu-west-2.compute.amazonaws.com:3000');
+
+    function socket_emit(typeVal, dataVal) {
+        var msg = {
+            type: typeVal,
+            data: dataVal
+        }
+        socket.send(JSON.stringify(msg));
+    }
+
+    function SendDataToTerminal(commandVal, dataVal) {
+        var msg = {
+            type: "SendDataFromUserToTerminal",
+            command: commandVal,
+            data: dataVal
+        }
+        socket.send(JSON.stringify(msg));
+    }
+
+    socket.onopen = function () {
+        const ApplicationUserId = "@profile.ApplicationUserId";
+        const params = { userid: ApplicationUserId};//jQuery.deparam(window.location.search);
+        socket_emit('joinUser', params);
+        $('[name=statusBar]').css('color', 'yellow');
+        $('[name=statusBar]').html("Connection Success!");
+    }
+
+    socket.onclose = function () {
+        $('[name=statusBar]').css('color', 'red');
+        $('[name=statusBar]').html("Connection Failed!");
+        console.log('Disconnected from the server');
+        //alert('Disconnected from the server');
+    }
+
+    socket.onmessage = function (event) {
+        var msg = JSON.parse(event.data);
+        var type = msg.type;
+        var data = msg.data;
+        switch (type) {
+            case 'MT4Symbols':
+                MT4ListSymbols = data;
+                var content = '';
+                for (var i = 0; i < MT4ListSymbols.length; i++) {
+                    var item = MT4ListSymbols[i];
+                    content += '<option value="' + item + '">' + item + '</option>';
+                }
+                $('#CurrencyPair').html(content);
+                break;
+            case 'MT4Settings':
+                MT4Settings = data;
+                MT4CurrentState = data;
+                var names = Object.keys(MT4CurrentState);
+                for (let i = 0; i < names.length; i++) {
+                    $('[name=' + names[i] + ']').attr('value', MT4CurrentState[names[i]]);
+                }
+                break;
+            case 'TerminalUpdate1':
+                MT4CurrentState = data;
+                $('[name=Symbol1]').attr('value', MT4CurrentState['Symbol1']);
+                $('[name=Ask1]').attr('value', MT4CurrentState['Ask1']);
+                $('[name=Bid1]').attr('value', MT4CurrentState['Bid1']);
+                $('[name=ExpertHandle1]').attr('value', MT4CurrentState['ExpertHandle1']);
+                break;
+            case 'TerminalOrders1':
+                MT4Orders = data;
+                var content = '';
+                for (let i = 0; i < MT4Orders.length; i++) {
+                    var Order = MT4Orders[i];
+                    content += '<tr>';
+                    content += '<td>';
+                    content += Order.Ticket;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.Symbol;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.Operation;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.OpenPrice;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.ClosePrice;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.Lots;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.Profit;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.MagicNumber;
+                    content += '</td>';
+                    content += '</tr>';
+                }
+                $('#tbody1').html(content);
+                break;
+            case 'TerminalOrders2':
+                MT4Orders = data;
+                MT4Orders = data;
+                var content = '';
+                for (let i = 0; i < MT4Orders.length; i++) {
+                    var Order = MT4Orders[i];
+                    content += '<tr>';
+                    content += '<td>';
+                    content += Order.Ticket;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.Symbol;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.Operation;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.OpenPrice;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.ClosePrice;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.Lots;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.Profit;
+                    content += '</td>';
+                    content += '<td>';
+                    content += Order.MagicNumber;
+                    content += '</td>';
+                    content += '</tr>';
+                }
+                $('#tbody2').html(content);
+                break;
+            case 'TerminalUpdate2':
+                MT4CurrentState = data;
+                $('[name=Symbol2]').attr('value', MT4CurrentState['Symbol2']);
+                $('[name=Ask2]').attr('value', MT4CurrentState['Ask2']);
+                $('[name=Bid2]').attr('value', MT4CurrentState['Bid2']);
+                $('[name=ExpertHandle2]').attr('value', MT4CurrentState['ExpertHandle2']);
+                break;
+            case 'MT4CurrentState':
+                MT4CurrentState = data;
+                var names = Object.keys(MT4CurrentState);
+                for (let i = 0; i < names.length; i++)
+                {
+                    $('[name=' + names[i] + ']').attr('value', MT4CurrentState[names[i]]);
+                }
+                AccountNo1 = MT4CurrentState.Account_No1;
+                AccountNo2 = MT4CurrentState.Account_No2;
+
+                if (Math.floor(AccountNo1 / 1000000 ) == 2) {
+                    $('#AccountStateLabel1').css('color', 'lawngreen');
+                    $('#AccountStateLabel1').html("Current Account is Swap-Free Account!");
+                }
+                else {
+                    $('#AccountStateLabel1').css('color', 'darkred');
+                    $('#AccountStateLabel1').html("Current Account is Swap Account!");
+                }
+
+                if (Math.floor(AccountNo2 / 1000000) == 2) {
+                    $('#AccountStateLabel2').css('color', 'lawngreen');
+                    $('#AccountStateLabel2').html("Current Account is Swap-Free Account!");
+
+                }
+                else {
+                    $('#AccountStateLabel2').css('color', 'darkred');
+                    $('#AccountStateLabel2').html("Current Account is Swap Account!");
+                }
+
+                if (AccountNo1 == '0') {
+                    $('#AccountStateIcon1').css('color', 'darkred');
+                    $('#AccountStateIcon1').attr('class', 'glyphicon glyphicon-remove');
+                    $('#AccountStateLabel1').html("");
+                }
+                else {
+                    $('#AccountStateIcon1').css('color', 'lawngreen');
+                    $('#AccountStateIcon1').attr('class', 'glyphicon glyphicon-ok');
+                }
+
+                if (AccountNo2 == '0') {
+                    $('#AccountStateIcon2').css('color', 'darkred');
+                    $('#AccountStateIcon2').attr('class', 'glyphicon glyphicon-remove');
+                    $('#AccountStateLabel2').html("");
+                }
+                else {
+                    $('#AccountStateIcon2').css('color', 'lawngreen');
+                    $('#AccountStateIcon2').attr('class', 'glyphicon glyphicon-ok');
+                }
+
+                break;
+            case 'MT4TerminalConnected1':
+                $('#AccountStateIcon1').css('color', 'lawngreen');
+                $('#AccountStateIcon1').attr('class', 'glyphicon glyphicon-ok');
+                break;
+            case 'MT4TerminalConnected2':
+                $('#AccountStateIcon2').css('color', 'lawngreen');
+                $('#AccountStateIcon2').attr('class', 'glyphicon glyphicon-ok');
+                break;
+            case 'MT4TerminalDisconnected1':
+                $('#AccountStateIcon1').css('color', 'darkred');
+                $('#AccountStateIcon1').attr('class', 'glyphicon glyphicon-remove');
+                break;
+            case 'MT4TerminalDisconnected2':
+                $('#AccountStateIcon2').css('color', 'darkred');
+                $('#AccountStateIcon2').attr('class', 'glyphicon glyphicon-remove');
+                break;
+
+            case 'terminalid':
+                var terminalid = data;
+                $('[name=terminalStatusBar]').css("color", "greenyellow");
+                $('[name=terminalStatusBar]').html("Terminal Connected! ( TerminalId: " + terminalid + ")");
+                break;
+            case 'DisconnectedTerminal':
+                $('[name=terminalStatusBar]').css("color", "red");
+                $('[name=terminalStatusBar]').html("Terminal Disconnected!");
+                $('#AccountStateLabel1').html("");
+                $('#AccountStateLabel2').html("");
+                $('#AccountStateIcon1').css('color', 'darkred');
+                $('#AccountStateIcon1').attr('class', 'glyphicon glyphicon-remove');
+                $('#AccountStateIcon2').css('color', 'darkred');
+                $('#AccountStateIcon2').attr('class', 'glyphicon glyphicon-remove');
+                break;
+        }
+    }
+
+    //Functions of BUTTON
+    function TryLogin() {
+        const AccountNo1 = jQuery('[name=AccountNo1]');
+        const AccountNo2 = jQuery('[name=AccountNo2]');
+        const Password1 = jQuery('[name=Password1]');
+        const Password2 = jQuery('[name=Password2]');
+        const MT4Server1 = jQuery('[name=MT4Server1]');
+        const MT4Server2 = jQuery('[name=MT4Server2]');
+
+        var emitData = {
+            AccountNo1: AccountNo1.val(),
+            AccountNo2: AccountNo2.val(),
+            Password1: Password1.val(),
+            Password2: Password2.val(),
+            MT4Server1: MT4Server1.val(),
+            MT4Server2: MT4Server2.val()
+        }
+        SendDataToTerminal('TryLogin', emitData);
+    }
+
+    function TryDisconnect() {
+        SendDataToTerminal('TryDisconnect', {});
+    }
+
+    function TrySelectCurrency() {
+        const CurrencyPair = jQuery('[name=CurrencyPair]');
+
+        var emitData = {
+            CurrencyPair: CurrencyPair.val()
+        }
+        SendDataToTerminal('TrySelectCurrency', emitData);
+    }
+
+    function TryReBalance() {
+        const UsernameToRebalance = jQuery('[name=UsernameToRebalance]');
+        const PasswordToRebalance = jQuery('[name=PasswordToRebalance]');
+        const WithdrawRetryCount = jQuery('[name=WithdrawRetryCount]');
+        const DepositeRetryCount = jQuery('[name=DepositeRetryCount]');
+
+        var emitData = {
+            UsernameToRebalance: UsernameToRebalance.val(),
+            PasswordToRebalance: PasswordToRebalance.val(),
+            WithdrawRetryCount: WithdrawRetryCount.val(),
+            DepositeRetryCount: DepositeRetryCount.val()
+        }
+        SendDataToTerminal('TryReBalance', emitData);
+    }
+
+    function TryStartToOpen() {
+        const SpreadToOpen = jQuery('[name=SpreadToOpen]');
+        const MarginTargetPercent = jQuery('[name=MarginTargetPercent]');
+        const SpliteCount = jQuery('[name=SpliteCount]');
+        const slippage1 = jQuery('[name=slippage1]');
+        const slippage2 = jQuery('[name=slippage2]');
+
+        var emitData = {
+            SpreadToOpen: SpreadToOpen.val(),
+            MarginTargetPercent: MarginTargetPercent.val(),
+            SpliteCount: SpliteCount.val(),
+            slippage1: slippage1.val(),
+            slippage2: slippage2.val()
+        }
+        SendDataToTerminal('TryStartToOpen', emitData);
+    }
+
+    function TryStartToClose() {
+        const SpreadToClose = jQuery('[name=SpreadToClose]');
+        const LowLimitMarginPercent = jQuery('[name=LowLimitMarginPercent]');
+        const MagicNumbersToClose = jQuery('[name=MagicNumbersToClose]');
+
+        var emitData = {
+            SpreadToClose: SpreadToClose.val(),
+            LowLimitMarginPercent: LowLimitMarginPercent.val(),
+            MagicNumbersToClose: MagicNumbersToClose.val()
+        }
+        SendDataToTerminal('TryStartToClose', emitData);
+    }
+
+    function TrySaveSetting() {
+        const AccountNo1 = jQuery('[name=AccountNo1]');
+        const Password1 = jQuery('[name=Password1]');
+        const MT4Server1 = jQuery('[name=MT4Server1]');
+        const slippage1 = jQuery('[name=slippage1]');
+
+        const AccountNo2 = jQuery('[name=AccountNo2]');        
+        const Password2 = jQuery('[name=Password2]');
+        const MT4Server2 = jQuery('[name=MT4Server2]');
+        const slippage2 = jQuery('[name=slippage2]');
+
+        const CurrencyPair = jQuery('[name=CurrencyPair]');
+        const SpreadToOpen = jQuery('[name=SpreadToOpen]');
+        const MarginTargetPercent = jQuery('[name=MarginTargetPercent]');
+        const SpliteCount = jQuery('[name=SpliteCount]');
+        const UsernameToRebalance = jQuery('[name=UsernameToRebalance]');
+        const PasswordToRebalance = jQuery('[name=PasswordToRebalance]');
+        const WithdrawRetryCount = jQuery('[name=WithdrawRetryCount]');
+        const DepositeRetryCount = jQuery('[name=DepositeRetryCount]');
+        const SpreadToClose = jQuery('[name=SpreadToClose]');
+        const LowLimitMarginPercent = jQuery('[name=LowLimitMarginPercent]');
+        const MagicNumbersToClose = jQuery('[name=MagicNumbersToClose]');
+
+        var emitData = {
+            AccountNo1: AccountNo1.val(),
+            AccountNo2: AccountNo2.val(),
+            Password1: Password1.val(),
+            Password2: Password2.val(),
+            MT4Server1: MT4Server1.val(),
+            MT4Server2: MT4Server2.val(),
+            CurrencyPair: CurrencyPair.val(),
+            UsernameToRebalance: UsernameToRebalance.val(),
+            PasswordToRebalance: PasswordToRebalance.val(),
+            WithdrawRetryCount: WithdrawRetryCount.val(),
+            DepositeRetryCount: DepositeRetryCount.val(),
+            SpreadToOpen: SpreadToOpen.val(),
+            MarginTargetPercent: MarginTargetPercent.val(),
+            SpliteCount: SpliteCount.val(),
+            slippage1: slippage1.val(),
+            slippage2: slippage2.val(),
+            SpreadToClose: SpreadToClose.val(),
+            LowLimitMarginPercent: LowLimitMarginPercent.val(),
+            MagicNumbersToClose: MagicNumbersToClose.val()
+        }
+        SendDataToTerminal('TrySaveSetting', emitData);
+    }
+    
+    
+</script>

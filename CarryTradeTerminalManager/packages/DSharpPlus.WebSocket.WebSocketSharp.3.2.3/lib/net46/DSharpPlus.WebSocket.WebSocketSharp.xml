@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DSharpPlus.WebSocket.WebSocketSharp</name>
+    </assembly>
+    <members>
+        <member name="T:DSharpPlus.Net.WebSocket.WebSocketSharpClient">
+            <summary>
+            A WS#-based WebSocket client.
+            </summary>
+        </member>
+    </members>
+</doc>
