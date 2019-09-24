@@ -23,42 +23,42 @@
 OS X & Linux:
 
 ```sh
-npm install my-crazy-module --save
+dotnet run
+npm start
 ```
 
 Windows:
 
 ```sh
-edit autoexec.bat
+dotnet run
+npm start
 ```
 
 ## Usage example
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
-
-_For more examples and usage, please refer to the [Wiki][wiki]._
+In this project.
+The CarryTradeManger will manage clients who want to use this strategy.
+And SocketManager will keep the communication between Manager and Terminal Manager.
+So You have to install this CarryTradeManager and SocketManager to WebHost.
 
 ## Development setup
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
+1. Visual Studio 2017 (ASP.NET.CORE, C#)
+2. NodeJS
 
 ```sh
-make install
-npm test
+npm install
 ```
 
 ## Release History
 
-* 0.2.1
-    * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-    * CHANGE: Remove `setDefaultXYZ()`
-    * ADD: Add `init()`
-* 0.1.1
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-    * The first proper release
-    * CHANGE: Rename `foo()` to `bar()`
+* 1.0.0
+    * Complete Total!
+* 0.9.0
+    * Complete: CarryTradeManager Finish.
+* 0.6.0
+    * Complete: EA Finish.
+* 0.3.0
+    * Complete: TerminalManagement Finish.
 * 0.0.1
     * Work in progress
 
