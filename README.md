@@ -1,5 +1,7 @@
-# Product Name
-> Short blurb about what your product does.
+# MT4-Metatrader-CarryTrading
+> The carry trade is one of the most popular trading strategies in the currency market. Mechanically, putting on a carry trade involves nothing more than buying a high yielding currency and funding it with a low yielding currency, similar to the adage "buy low, sell high."
+
+> The most popular carry trades involve buying currency pairs like the Australian dollar/Japanese yen and New Zealand dollar/Japanese yen because the interest rate spreads of these currency pairs are very high. The first step in putting together a carry trade is to find out which currency offers a high yield and which one offers a low yield.
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
