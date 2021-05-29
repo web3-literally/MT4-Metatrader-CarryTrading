@@ -20,7 +20,7 @@
     "mocha": "^5.2.0",
     "moment": "^2.22.2",
     "socket.io": "^2.1.1",
-    "ws": "^7.1.1"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
